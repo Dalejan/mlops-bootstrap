@@ -1,0 +1,4 @@
+['remote "dataset-track"']
+    url = gdrive://1iPMmHoy-pThbvc8PIil__hrxuq9YfxyQ/Data
+['remote "model-track"']
+    url = gdrive://1iPMmHoy-pThbvc8PIil__hrxuq9YfxyQ/Model
