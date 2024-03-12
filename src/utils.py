@@ -18,9 +18,9 @@ def save_metrics_report(
         for key, value in model.named_steps.items():
             report_file.write(f"### {key}:{value.__repr__()}" + "\n")
 
-        report_file.write(f"## Train Score: {train_score}")
-        report_file.write(f"## Test Score: {test_score}")
-        report_file.write(f"## Validation Score: {validation_score}")
+        report_file.write(f"## Train Score: {train_score} \n")
+        report_file.write(f"## Test Score: {test_score} \n")
+        report_file.write(f"## Validation Score: {validation_score} \n")
 
 
 def get_test_performance(y_real: pd.Series, y_pred: pd.Series) -> None:
