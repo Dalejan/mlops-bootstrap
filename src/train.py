@@ -10,7 +10,7 @@ import pandas as pd
 import sys
 import logging
 
-from utils import update_model
+from utils import update_model, save_metrics_report, get_test_performance
 
 logging.basicConfig(
     format="%(asctime)s %(levelname)s:%(name)s: %(message)s",
@@ -62,5 +62,16 @@ logger.info(f"Train score: {train_score}")
 logger.info(f"Test score: {test_score}")
 
 logger.info("Updating model ...")
-
 update_model(grid_search.best_estimator_)
+
+logger.info("Generating model report ...")
+validation_score = grid_search.best_estimator_.score(X_test, y_test)
+save_metrics_report(
+    train_score, test_score, validation_score, grid_search.best_estimator_
+)
+
+y_test_pred = grid_search.best_estimator_.predict(X_test)
+get_test_performance(y_test, y_test_pred)
+
+
+logger.info("Training Finished")
