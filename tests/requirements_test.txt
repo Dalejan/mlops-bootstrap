@@ -1,0 +1,4 @@
+
+-r api/requirements.txt
+
+pytest==8.1.1
