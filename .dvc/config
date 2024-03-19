@@ -1,4 +1,8 @@
 ['remote "dataset-track"']
     url = gdrive://1iPMmHoy-pThbvc8PIil__hrxuq9YfxyQ/Data
+    gdrive_use_service_account = true
+    gdrive_service_account_json_file_path = path.json
 ['remote "model-track"']
     url = gdrive://1iPMmHoy-pThbvc8PIil__hrxuq9YfxyQ/Model
+    gdrive_use_service_account = true
+    gdrive_service_account_json_file_path = path.json

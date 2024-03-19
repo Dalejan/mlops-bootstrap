@@ -3,6 +3,8 @@ on: [push, pull_request]
 jobs:
   testing-api:
     runs-on: ubuntu-latest
+    env:
+      SERVICE_ACCOUNT_KEY: ${{secrets.SERVICE_ACCOUNT_KEY}}
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v3
@@ -13,10 +15,11 @@ jobs:
           source venv/bin/activate
       - name: Installing dependencies
         run: |
+          pip install dvc==3.48.3
           pip install dvc[gdrive]
-          ls -la
           pip install -r tests/requirements_test.txt
       - name: Test API
         run: |
+          export GOOGLE_APPLICATION_CREDENTIALS=$(python utils/setter.py)
           dvc pull model/model.pkl -r model-track --force
           pytest tests
