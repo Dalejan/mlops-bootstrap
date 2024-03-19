@@ -1,0 +1,21 @@
+name: Testing API
+on: [push, pull_request]
+jobs:
+  testing-api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+      - name: Creating and activating virtualenv
+        run: |
+          pip3 install virtualenv
+          virtaulenv venv
+          source venv/bin/activate
+      - name: Installing dependencies
+        run: |
+          pip install dvc[gdrive]
+          pip install -r requirements_test.txt
+      - name: Test API
+        run: |
+          dvc pull model/model.pkl -r model-track
+          pytest tests.py
